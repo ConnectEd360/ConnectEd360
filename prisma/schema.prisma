@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String?
+  email    String @unique
+  
+  // Basic subscription info
+  subscriptionTier String @default("basic")
+  
+  // Relationships
+  students Student[]
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("users")
+}
+
+model Student {
+  id          String @id @default(cuid())
+  studentId   String
+  firstName   String
+  lastName    String
+  grade       String
+  campus      String
+  
+  // Timeline tracking
+  consentDate   DateTime?
+  dueDate       DateTime?
+  daysRemaining Int?
+  status        String @default("pending")
+  
+  // Relationships
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  @@map("students")
+}
