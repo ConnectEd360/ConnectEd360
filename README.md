@@ -77,4 +77,4 @@ Currently handles basic student tracking - more comprehensive features coming so
 *Version 1.0 - Basic Student Tracker*
 >>>>>>> ba8f0f218ed7775b35c261143936901781c023e9
 ## Screenshots
-See the [screenshots folder](ConnectEd360/screenshots/) for current UI examples from Phase 2A.
+See the [screenshots folder](./screenshots/) for current UI examples from Phase 2A.
